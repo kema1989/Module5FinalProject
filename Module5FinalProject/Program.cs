@@ -155,51 +155,6 @@ namespace Module5FinalProject
             return intnumber;
         }
         //---------------------------------------------------------------------
-        // Наличие питомцев и их количетсво
-        static string HasPet()
-        {
-            Console.WriteLine("Имеется ли у вас питомец/питомцы? (Напечатайте \"Да\",\nесли есть; если питомца/питомцев нет, печатайте, что пожелаете)");
-            string pet = Console.ReadLine();
-            
-            if(pet == "Да")
-            {
-                Console.WriteLine("Напишите количество имеющихся питомцев:");
-                int numberofpets = TypeNumber();
-                var pets = PetNamespace(numberofpets);
-                
-                if(numberofpets == 1)  // Если питомец один
-                {
-                    Console.Write($"У вас {numberofpets} питомец с кличкой:");
-                    Console.Write($"{pets}");
-                }
-                
-                else if(numberofpets > 1 & numberofpets < 5)  // Если питомцев 2, 3 или 4
-                {
-                    Console.WriteLine($"У вас {numberofpets} питомца с кличками:");
-                    foreach(var petname in pets)
-                    {
-                        Console.Write(petname + " ");
-                    }
-                }
-                
-                else  // Если питомцев 5 и больше (21-24, 31-34,... - маловероятные кейсы, да и лень это расписывать :-)
-                {
-                    Console.WriteLine($"У вас {numberofpets} питомцев с кличками:");
-                    foreach(var petname in pets)
-                    {
-                        Console.Write(petname + " ");
-                    }
-                }
-            }
-            
-            else
-            {
-                Console.WriteLine("Окей, у вас нет питомцев");
-            }
-            
-            return pet;
-        }
-        //---------------------------------------------------------------------
         // Клички питомцев
         static string[] PetNamespace(int num)
         {
