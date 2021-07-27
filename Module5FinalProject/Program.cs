@@ -9,7 +9,7 @@ namespace Module5FinalProject
             EnterUser();
         }
         //---------------------------------------------------------------------
-        // Данные пользователя
+        // 1. Данные пользователя
         static (string name, string lasname, int age, string[] petsnames, int favcnum, string[] favcolors) EnterUser()
         {
             (string name, string lastname, int age, string[] petsnames, int favcnum, string[] favcolors) user;
@@ -24,9 +24,9 @@ namespace Module5FinalProject
             int intage = TypeNumber();
             user.age = intage;
 
-            Console.WriteLine("Имеется ли у вас питомец/питомцы? (Напечатайте \"Да\",\nесли есть; если питомца/питомцев нет, печатайте, что пожелаете)");
+            Console.WriteLine("Имеется ли у вас питомец/питомцы? (Напечатайте \"да\",\nесли есть; если питомца/питомцев нет, печатайте, что пожелаете)");
             string havingpet = Console.ReadLine();
-            if (havingpet == "Да")
+            if (havingpet == "да")
             {
                 Console.WriteLine("Напишите количество имеющихся питомцев:");
                 int numberofpets = TypeNumber();
@@ -44,7 +44,7 @@ namespace Module5FinalProject
             user.favcolors = FavColors(intfavc);
 
             Console.WriteLine($"Итак, ваши данные:\nВас зовут {user.name}, ваша фамилия {user.lastname}, вам {user.age} лет.");
-            if(havingpet == "Да")
+            if(havingpet == "да")
             {
                 Console.WriteLine("Ваши питомцы:");
                 foreach(var pet in user.petsnames)
@@ -66,6 +66,7 @@ namespace Module5FinalProject
                         break;
                     case "желтый":
                         Console.BackgroundColor = ConsoleColor.Yellow;
+                        Console.ForegroundColor = ConsoleColor.Black;
                         break;
                     case "зеленый":
                         Console.BackgroundColor = ConsoleColor.Green;
@@ -84,6 +85,7 @@ namespace Module5FinalProject
                         break;
                     case "серый":
                         Console.BackgroundColor = ConsoleColor.Gray;
+                        Console.ForegroundColor = ConsoleColor.Black;
                         break;
                     case "белый":
                         Console.BackgroundColor = ConsoleColor.White;
@@ -101,11 +103,11 @@ namespace Module5FinalProject
             return user;
         }
         //---------------------------------------------------------------------
-        // Метод вывода кортежа, который мне так и не удалось связать с EnterUser(), массивы не отображаются.
+        // 2. Метод вывода кортежа, который мне так и не удалось связать с EnterUser(), массивы не отображаются.
         static void OutPut()
         {
             var user = EnterUser();
-            Console.WriteLine(user);
+            Console.WriteLine(user); //??? Как отобразить массив в кортеже?
         }
         //---------------------------------------------------------------------
         // Проверка на правильность введенных чисел
@@ -125,7 +127,7 @@ namespace Module5FinalProject
             }
         }
         //---------------------------------------------------------------------
-        /*Еще один метод для проверки. Дело в том, что я не понял по подсказкам,
+        /* 3. Еще один метод для проверки. Дело в том, что я не понял по подсказкам,
         * как сделать проверку, у меня получалось так, что приходится бесконечно вводить числа,
         * а при ошибке компиляция останавливается. В общем, добавление еще одного метода это решило,
         * надеюсь, что так тоже можно.
@@ -155,7 +157,7 @@ namespace Module5FinalProject
             return intnumber;
         }
         //---------------------------------------------------------------------
-        // Клички питомцев
+        // 4. Клички питомцев
         static string[] PetNamespace(int num)
         {
             var arr = new string[num];
@@ -169,13 +171,13 @@ namespace Module5FinalProject
             return arr;
         }
         //---------------------------------------------------------------------
-        // Количество любимых цветов
+        // 5. Любимые цвета
         static string[] FavColors(int numf)
         {            
             var favc = new string[numf];
             for(int i = 0; i < favc.Length; i++)
             {
-                Console.WriteLine($"Введите любимый цвет номер {i + 1}");
+                Console.WriteLine($"Введите любимый цвет номер {i + 1} с маленькой буквы на русском");
                 favc[i] = Console.ReadLine();
             }
             
