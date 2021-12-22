@@ -6,7 +6,8 @@ namespace Module5FinalProject
     {
         static void Main(string[] args)
         {
-            EnterUser();
+            var user = EnterUser();
+            OutPut(user);
         }
         //---------------------------------------------------------------------
         // 1. Данные пользователя
@@ -43,20 +44,19 @@ namespace Module5FinalProject
             user.favcnum = intfavc;
             user.favcolors = FavColors(intfavc);
 
-            Console.WriteLine($"Итак, ваши данные:\nВас зовут {user.name}, ваша фамилия {user.lastname}, вам {user.age} лет.");
-            if(havingpet == "да")
-            {
-                Console.WriteLine("Ваши питомцы:");
-                foreach(var pet in user.petsnames)
-                {
-                    Console.Write(pet + " ");
-                }
-            }
-            else
-            {
-                Console.WriteLine("У вас нет питомцев");
-            }
-            Console.WriteLine("Ваши любимые цвета:");
+            //if(havingpet == "да")
+            //{
+            //    Console.WriteLine("Ваши питомцы:");
+            //    foreach(var pet in user.petsnames)
+            //    {
+            //        Console.Write(pet + " ");
+            //    }
+            //}
+            //else
+            //{
+            //    Console.WriteLine("У вас нет питомцев");
+            //}
+            //Console.WriteLine("Ваши любимые цвета:");
             foreach(var color in user.favcolors)
             {
                 switch (color)
@@ -104,10 +104,23 @@ namespace Module5FinalProject
         }
         //---------------------------------------------------------------------
         // 2. Метод вывода кортежа, который мне так и не удалось связать с EnterUser(), массивы не отображаются.
-        static void OutPut()
+        static void OutPut((string name, string lastname, int age, string[] petsnames, int favcnum, string[] favcolors) user)
         {
-            var user = EnterUser();
-            Console.WriteLine(user); //??? Как отобразить массив в кортеже?
+            Console.WriteLine("Ваши данные:");
+            Console.WriteLine($"Ваше имя {user.name}");
+            Console.WriteLine($"Ваша фамилия {user.lastname}");
+            Console.WriteLine($"Ваш возраст {user.age}");
+            Console.WriteLine("Ваши питомцы:");
+            foreach(var pet in user.petsnames)
+            {
+                Console.WriteLine(pet);
+            }
+            Console.WriteLine("Ваши любимые цвета:");
+            foreach(var favc in user.favcolors)
+            {
+                Console.WriteLine(favc);
+            }
+
         }
         //---------------------------------------------------------------------
         // 3. Проверка на правильность введенных чисел
