@@ -44,19 +44,6 @@ namespace Module5FinalProject
             user.favcnum = intfavc;
             user.favcolors = FavColors(intfavc);
 
-            //if(havingpet == "да")
-            //{
-            //    Console.WriteLine("Ваши питомцы:");
-            //    foreach(var pet in user.petsnames)
-            //    {
-            //        Console.Write(pet + " ");
-            //    }
-            //}
-            //else
-            //{
-            //    Console.WriteLine("У вас нет питомцев");
-            //}
-            //Console.WriteLine("Ваши любимые цвета:");
             foreach(var color in user.favcolors)
             {
                 switch (color)
@@ -124,53 +111,27 @@ namespace Module5FinalProject
         }
         //---------------------------------------------------------------------
         // 3. Проверка на правильность введенных чисел
-        static bool CheckNumber(string number, out int corrnumber)
-        {
-            if(int.TryParse(number, out int intnum))
-            {
-                if(intnum > 0)
-                {
-                    corrnumber = intnum;
-                    return true;
-                }
-            }
-            {
-                corrnumber = 0;
-                return false;
-            }
-        }
-        //---------------------------------------------------------------------
-        /* 4. Еще один метод для проверки. Дело в том, что я не понял по подсказкам,
-        * как сделать проверку, у меня получалось так, что приходится бесконечно вводить числа,
-        * а при ошибке компиляция останавливается. В общем, добавление еще одного метода это решило,
-        * надеюсь, что так тоже можно.
-        */
         static int TypeNumber()
         {
-            int intnumber;
+            int corrNumber;
             string number;
             do
             {
                 number = Console.ReadLine();
-                if(CheckNumber(number, out intnumber))
+                if (int.TryParse(number, out int number1))
                 {
-                    break;
+                    if (number1 > 0)
+                    {
+                        corrNumber = number1;
+                        break;
+                    }
                 }
-                else if (CheckNumber(number, out intnumber) == false)
-                {
-                    Console.WriteLine("Введите число заново. Избегайте ввода отрицательных, дробных чисел,\nнуля и букв/символов.");
-                    intnumber = TypeNumber();
-                    break;
-                }
-                else
-                {
-                    break;
-                }
-            } while (CheckNumber(number, out intnumber));
-            return intnumber;
+                Console.WriteLine("Введите число заново. Избегайте ввода отрицательных, дробных чисел,\nнуля и букв/символов.");
+            } while (true);
+            return corrNumber;
         }
         //---------------------------------------------------------------------
-        // 5. Клички питомцев
+        // 4. Клички питомцев
         static string[] PetNamespace(int num)
         {
             var arr = new string[num];
@@ -184,7 +145,7 @@ namespace Module5FinalProject
             return arr;
         }
         //---------------------------------------------------------------------
-        // 6. Любимые цвета
+        // 5. Любимые цвета
         static string[] FavColors(int numf)
         {            
             var favc = new string[numf];
